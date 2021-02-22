@@ -14,7 +14,43 @@
     <title>Foodie</title>
 </head>
 <body>
+<header>
+    <!-- top navbar -->
+    <nav class ="orange lighten-5 text-shadow">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Foodie</a>
+            <a href="#" data-target="nav-bar" class="sidenav-trigger"><i class="fas fa-bars">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">My Favourites</a></li>
+                <li><a href="#">Add recipe</a></li>
+                <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+                <li><a href="{{ url_for('register') }}">Become a member!</a></li>
+                <li><a href="#">Log In</a></li>
+                 <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="fas fa-search"> Search Recipes</i></label>
+            </div>
+        </form>
+    </div>
+    <ul class="sidenav" id="nav-bar">
+        <li><h4 class="center-align">Foodie</h4></li>
+        <li><a href="#">My Profile</a></li>
+        <li><a href="#">My Favourites</a></li>
+        <li><a href="#">Add recipe</a></li>
+        <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+        <li><a href="collapsible.html">Log In</a></li>
+        <li><a href="badges.html">Log Out</a></li>
+    </ul>
+</header>
     <h1>Trying out the base template</h1>
+
     {% block content %}
     {% endblock %}
 
