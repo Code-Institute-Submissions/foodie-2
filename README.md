@@ -10,6 +10,8 @@ image
 
 ### Design/Color scheme
 
+background image Photo by Lukas from Pexels
+
 ### Typography
 
 ### Features
@@ -41,6 +43,7 @@ image
 
 ## Media
 
+Photo by Lukas from Pexels 
 ## Deployment
 
 ## Credits
