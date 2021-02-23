@@ -2,14 +2,54 @@
 {% block content %}
 
 
-<h3>This is where I register</h3>
+<h3> Be a Foodie and you can add your own recipes and save your favourites on your profile.</h3>
+
+<h3>Log in w FaceBook</h3>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2">
-            <div class="card-panel teal">
-            <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-            </span>
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+            <div class="card-panel">
+                <!-- username-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" name="username" type="text" class="validate" minlength="4" maxlength="15"
+                               required>
+                        <label for="username"> <i class=" fas fa-user"></i> Username</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="first_name" name="first_name" type="text" class="validate" minlength="2" maxlength="15"
+                               required>
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" name="last_name" type="text" class="validate" minlength="2" maxlength="15"
+                               required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="email" name="email" type="email" class="validate" required>
+                        <label for="email"><i class=" fas fa-at"></i> Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="phone" name="phone" type="tel" class="validate" required>
+                        <label for="phone"> <i class="fas fa-phone"></i> Telephone</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="passwordConfirm" type="password">
+                        <label id="lblPasswordConfirm" for="passwordConfirm" data-error="Password not match"
+                               data-success="Password Match">Password (Confirm)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" name="action">Submit
+                        <i class="fas fa-sign-in"></i>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
