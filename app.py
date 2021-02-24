@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = mongo.db.recipes.find()
+    recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -93,6 +93,12 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("get_recipes"))
+
+
+@app.route("/add_recipes", methods=["POST", "GET"])
+def add_recipes():
+
+    return render_template('add_recipes.html')
 
 
 if __name__ == "__main__":

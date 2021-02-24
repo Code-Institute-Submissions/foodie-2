@@ -1,6 +1,12 @@
 $(document).ready(function(){
     //Navigation
     $('.sidenav').sidenav();
+    //Dropdown
+    $('.dropdown-trigger').dropdown();
+    //Collapse
+    $('.collapsible').collapsible();
+    //Multiple Select
+    $('select').formSelect();
 
     //Confirm password
     $("#password").on("focusout", function (e) {
