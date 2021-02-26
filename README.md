@@ -65,7 +65,9 @@ background image Photo by Lukas from Pexels
 ### Different browsers
 
 ## Known bugs/ issues
- - Had trouble with the upload recipe image 
+
+ - Had trouble with the upload recipe image function. 
+ after extensive search on stack overflow and such I found this video on Youtube https://www.youtube.com/watch?v=DsgAuceHha4 and I finally figured it out after many trials and errors.
 
 ## Media
 

@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>from recipes</h3>
+
+<h3>Search through all of our tasty recipes</h3>
  <div class="row">
      {% for recipe in recipes %}
     <div class="col s12">
       <div class="card">
         <div class="card-image">
-          <img src="static/images/c-board-foodie.jpg">
+          <img src=/file/{{ recipe.recipe_image }}>
           <span class="card-category">{{ recipe.sub_category_name }}</span>
             <span class="card-title">{{ recipe.recipe_name }}</span>
           <a class="btn-floating halfway-fab waves-light red"><i class="fas fa-heart"></i></a>
@@ -21,7 +22,7 @@
                   <div class="collapsible-body">
                       <div class="row">
                       <div class="col s4"><h4>Ingredients:</h4>
-                          {% for ingredient in recipe.recipe_ingredients %}
+                          {% for ingredient in recipe.recipe_ingredients.split(',') %}
                            <p>{{ ingredient }}</p>
                           {% endfor %}
                       </div>
@@ -34,17 +35,5 @@
     </div>
      {% endfor %}
   </div>
-
-    {% for recipe in recipes %}
-        {{ recipe.category_name }}<br>
-        {{ recipe.sub_category_name }}<br>
-        {{ recipe.recipe_name }}<br>
-        {{ recipe.recipe_description }}<br>
-        {{ recipe.recipe_ingredients }}<br>
-        {{ recipe.recipe_how_to }}<br>
-        {{ recipe.recipe_image }}<br>
-        {{ recipe.recipe_favourite }}<br>
-        {{ recipe.recipe_author }}
-    {% endfor %}
 
 {% endblock %}

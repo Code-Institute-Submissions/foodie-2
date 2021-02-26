@@ -1,4 +1,5 @@
 import os
+import re
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -21,7 +22,14 @@ mongo = PyMongo(app)
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
+    for recipe in recipes:
+        url_for('file', filename=['recipe.recipe_image'])
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -109,7 +117,7 @@ def add_recipes():
             "category_name": request.form.get("category_name"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "recipe_image": recipe_image,
+            "recipe_image": recipe_image.filename,
             "recipe_how_to": request.form.get("recipe_how_to"),
             "created_by": session["user"]
         }
@@ -121,7 +129,7 @@ def add_recipes():
     return render_template('add_recipes.html', categories=categories)
 
 
-@app.route("/edit_recipe/<recipe_id>", methods= ["GET", "POST"])
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
