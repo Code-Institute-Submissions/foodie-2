@@ -82,7 +82,8 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session['user']:
-        return render_template("profile.html", username=username)
+        recipes = list(mongo.db.recipes.find())
+        return render_template("profile.html", username=username, recipes=recipes)
 
     return redirect(url_for("login"))
 
@@ -97,8 +98,34 @@ def logout():
 
 @app.route("/add_recipes", methods=["POST", "GET"])
 def add_recipes():
+    categories = list(mongo.db.categories.find())
 
-    return render_template('add_recipes.html')
+    if request.method == "POST":
+        recipe_image = request.files['recipe_image']
+        mongo.save_file(recipe_image.filename, recipe_image)
+
+        recipe = {
+            "recipe_name": request.form.get("recipe_name"),
+            "category_name": request.form.get("category_name"),
+            "recipe_description": request.form.get("recipe_description"),
+            "recipe_ingredients": request.form.get("recipe_ingredients"),
+            "recipe_image": recipe_image,
+            "recipe_how_to": request.form.get("recipe_how_to"),
+            "created_by": session["user"]
+        }
+
+        mongo.db.recipes.insert_one(recipe)
+        flash("Recipe Successfully Added")
+        return redirect(url_for("add_recipes"))
+
+    return render_template('add_recipes.html', categories=categories)
+
+
+@app.route("/edit_recipe/<recipe_id>", methods= ["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template('edit_recipes.html', recipe=recipe, categories=categories)
 
 
 if __name__ == "__main__":
