@@ -12,7 +12,7 @@
 
 ### Design/Color scheme
 
-- I've used Materialize
+- I've used Materialize CSS framework
 - The site is to some extent depending on images uploaded by users
 
 background image Photo by Lukas from Pexels
@@ -41,7 +41,8 @@ background image Photo by Lukas from Pexels
 ### Languages
 - HTML 5
 - CSS3
-- JavaScripts
+- Python
+- JavaScript
 
 ### Frameworks, Libraries and programs
 - Materialize
@@ -68,6 +69,8 @@ background image Photo by Lukas from Pexels
 
  - Had trouble with the upload recipe image function. 
  after extensive search on stack overflow and such I found this video on Youtube https://www.youtube.com/watch?v=DsgAuceHha4 and I finally figured it out after many trials and errors.
+
+- Had trouble parsing ObjectId when fetching recipe_id as it was passed in as an object and not a string.
 
 ## Media
 
