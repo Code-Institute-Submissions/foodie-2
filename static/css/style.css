@@ -1,10 +1,54 @@
 body {
-    background-color: #FFfCE8;
+    background-color: #F8f8f8;
+    font-family: 'RocknRoll One', sans-serif;
 }
-.text-shadow {
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+nav {
+    background-color: #F7ECE1;
+}
+nav a,
+nav .brand-logo,
+nav ul a {
+    color: #242038;
 }
 
 .flashes h4 {
     line-height: 2;
+}
+.btn-floating.halfway-fab {
+    bottom: 15px;
+}
+.card-category {
+    color: #242038;
+    background-color: #F7ECE1;
+    position: absolute;
+    padding: 2px 4px;
+    top: 15px;
+    left: 15px;
+}
+.card-image-img {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover!important;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+}
+.recipe-bodytext {
+    white-space: pre-wrap;
+}
+
+.card .card-image .card-title {
+    color: #242038;
+    background-color: #F7ECE1;
+    position: absolute;
+    padding: 2px 4px;
+    bottom: 15px;
+    left: 15px;
+}
+
+[type="checkbox"]+span:not(.lever) {
+    margin-right: 25px;
+    padding-left: 30px;
+    line-height: 20px;
 }

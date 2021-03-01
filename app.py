@@ -22,9 +22,11 @@ mongo = PyMongo(app)
 @app.route("/get_recipes")
 def get_recipes():
     recipes = list(mongo.db.recipes.find())
+    categories = list(mongo.db.categories.find())
+
     for recipe in recipes:
         url_for('file', filename=['recipe.recipe_image'])
-    return render_template("recipes.html", recipes=recipes)
+    return render_template("recipes.html", recipes=recipes, categories=categories)
 
 
 @app.route('/file/<filename>')
@@ -119,6 +121,7 @@ def add_recipes():
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "recipe_image": recipe_image.filename,
             "recipe_how_to": request.form.get("recipe_how_to"),
+            "more_info": request.form.get("more_info"),
             "created_by": session["user"]
         }
 
@@ -133,17 +136,24 @@ def add_recipes():
 def edit_recipe(recipe_id):
     if request.method == "POST":
         recipe_image = request.files['recipe_image']
-        mongo.save_file(recipe_image.filename, recipe_image)
 
         edit = {
             "recipe_name": request.form.get("recipe_name"),
             "category_name": request.form.get("category_name"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
-            "recipe_image": recipe_image.filename,
             "recipe_how_to": request.form.get("recipe_how_to"),
             "created_by": session["user"]
         }
+        if recipe_image.filename:
+            mongo.save_file(recipe_image.filename, recipe_image)
+            edit.update({
+                "recipe_image": recipe_image.filename
+            })
+        else:
+            edit.update({
+                "recipe_image": request.form.get("current_recipe_img")
+            })
 
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
         flash("Recipe Successfully Updated!")
@@ -151,6 +161,13 @@ def edit_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template('edit_recipe.html', recipe=recipe, categories=categories)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("get_recipes"))
 
 
 if __name__ == "__main__":

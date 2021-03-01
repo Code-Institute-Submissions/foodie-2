@@ -8,8 +8,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
               integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
               crossorigin="anonymous" type="text/css">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
               type="text/css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Roboto&family=RocknRoll+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
         {% block styles %}
         {% endblock %}
@@ -17,40 +20,27 @@
     </head>
     <body>
     <header>
-        <!-- Dropdown Structure -->
-        <ul id="trigger-recipes" class="dropdown-content">
-            <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">three</a></li>
-        </ul>
         <!-- top navbar -->
-        <nav class="orange lighten-5 text-shadow">
+        <nav class="nav-color text-shadow">
+           <div class="container">
             <div class="nav-wrapper">
                 <a href="{{ url_for('get_recipes') }}" class="brand-logo">Foodie</a>
-                <a href="#" data-target="nav-bar" class="sidenav-trigger"><i class="fas fa-bars">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                        <li><a class="dropdown-trigger" href="#!" data-target="trigger-recipes">Recipes<i class="fas fa-chevron-down"></i></a></li>
+                        <li id="nav-get_recipes"><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
                     {% if session.user %}
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                        <li><a href="#">My Favourites</a></li>
-                        <li><a href="{{ url_for('add_recipes') }}">Add recipe</a></li>
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        <li id="nav-profile"><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                        <li id="nav-favourites"><a href="#">My Favourites</a></li>
+                        <li id="nav-add_recipes"><a href="{{ url_for('add_recipes') }}">Add recipe</a></li>
+                        <li id="nav-logout"><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('register') }}">Sign Up!</a></li>
-                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li id="nav-register"><a href="{{ url_for('register') }}">Sign Up!</a></li>
+                        <li id="nav-login"><a href="{{ url_for('login') }}">Log In</a></li>
                     {% endif %}
                 </ul>
+                <a href="#" data-target="nav-bar" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             </div>
+               </div>
         </nav>
-        <div class="nav-wrapper">
-            <form>
-                <div class="input-field">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="fas fa-search"> Search Recipes</i></label>
-                </div>
-            </form>
-        </div>
         <ul class="sidenav" id="nav-bar">
             <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
             {% if session.user %}
@@ -85,6 +75,10 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        //Navbar active class
+        $("#nav-{{request.endpoint}}").addClass("active");
+    </script>
     {% block scripts %}
     {% endblock %}
     </body>

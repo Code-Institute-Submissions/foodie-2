@@ -8,11 +8,9 @@
         <form class="" method="POST" action=" {{ url_for('add_recipes') }}" enctype="multipart/form-data">
             <div class="card">
                 <div class="card-image">
-                    <img src="static/images/c-board-foodie.jpg">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="recipe_name" name="recipe_name" type="text" class="validate"
-                                   maxlength="25" required>
+                            <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
                             <label for="recipe_name">Recipe Name</label>
                         </div>
                         <div class="input-field col s12">
@@ -25,30 +23,26 @@
                             </select>
                         </div>
                         <div class="input-field col s12">
-                            <input id="recipe_description" name="recipe_description"  value="{{ recipe.recipe_description }}" type="text" class="validate"
+                            <input id="recipe_description" name="recipe_description" type="text" class="validate"
                                    required>
                             <label for="recipe_description">Description</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="recipe_ingredients" placeholder="For best result separate each ingredient with a comma"
-                                   name="recipe_ingredients"  value="{{ recipe.recipe_ingredients }}"type="text" class="validate"
-                                   required>
+                            <textarea id="recipe_ingredients" class="materialize-textarea" name="recipe_ingredients"
+                                      type="text" class="validate" required> </textarea>
                             <label for="recipe_ingredients">Ingredients</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="recipe_how_to" name="recipe_how_to" placeholder="Step one:" type="text" class="validate"
-                                   required>
+                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to" placeholder="Step one:"
+                                      type="text" class="validate" required></textarea>
                             <label for="recipe_how_to">How To</label>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s6">
-                <button class="btn-flat" type="submit" name="action">Submit
-                </button>
-            </div>
-            <div class="col s6">
-                <div class="file-field input-field">
+                         <div class="input-field col s12">
+                            <input id="more_info" name="more_info" type="text" class="validate"
+                                   required>
+                            <label for="more_info">Have you got something further to add:</label>
+                        <div class="input-field col s12">
+                            <div class="file-field input-field">
                     <div class="btn">
                         <span>Upload image</span>
                         <input type="file" name="recipe_image" accept="image/*" required>
@@ -57,6 +51,13 @@
                         <input class="file-path validate" type="text">
                     </div>
                 </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <button class="btn-flat" type="submit" name="action">Submit
+                </button>
             </div>
         </form>
     </div>

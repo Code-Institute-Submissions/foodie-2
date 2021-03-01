@@ -8,11 +8,12 @@
               enctype="multipart/form-data">
             <div class="card">
                 <div class="card-image">
-                    <img src="static/images/c-board-foodie.jpg">
+                    <img src="/file/{{ recipe.recipe_image }}" alt="">
+                    <input type="hidden" name="current_recipe_img" id="current_recipe_img" value="{{ recipe.recipe_image }}">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="recipe_name" name="recipe_name" type="text" class="validate"
-                                   maxlength="25" value="{{ recipe.recipe_name }}" required>
+                                    value="{{ recipe.recipe_name }}" required>
                             <label for="recipe_name">Recipe Name</label>
                         </div>
                         <div class="input-field col s12">
@@ -34,21 +35,26 @@
                             <label for="recipe_description">Description</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="recipe_ingredients" name="recipe_ingredients" type="text" class="validate"
-                                   value="{{ recipe.recipe_ingredients }}" required>
+                            <textarea id="recipe_ingredients" class="materialize-textarea" name="recipe_ingredients"
+                                      type="text" class="validate" required>{{ recipe.recipe_ingredients }}</textarea>
                             <label for="recipe_ingredients">Ingredients</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="recipe_how_to" name="recipe_how_to" type="text" class="validate"
-                                   value="{{ recipe.recipe_how_to }}" required>
+                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to" placeholder="Step one:"
+                                      type="text" class="validate" required>{{ recipe.recipe_how_to }}</textarea>
                             <label for="recipe_how_to">How To</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="more_info" name="more_info" type="text" class="validate"
+                                   value="{{ recipe.more_info }}">
+                            <label for="more_info"> Have you got something further to add:</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col s6">
-                <a class=" btn-small" href="{{ url_for('get_recipes') }}">Update!</a>
-                <a class=" btn-small" href="">Cancel</a>
+                <button class="btn-small" type="submit">Update!</button>
+                <a class="btn-small" href="{{ url_for('get_recipes') }}">Cancel</a>
             </div>
             <div class="col s6">
                 <div class="file-field input-field">
