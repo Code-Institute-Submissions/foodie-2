@@ -1,8 +1,9 @@
 # Foodie
+![Home page](https://github.com/carrozw/foodie/blob/main/images/foodie-devices.jpg)
 
 Foodie was designed, built and deployed by Caroline Zwolinski as her third project for the Code Institute Full Stack Web Development. The purpose of the site is to share recipes with fellow foodlovers. 
 
-# ux
+# UX
 
 ## Visitor/User Goals
 
@@ -11,6 +12,7 @@ Foodie was designed, built and deployed by Caroline Zwolinski as her third proje
 - As a user I want it to be easy to navigate on the site.
 
 ## Business Goals
+
 If there were any, I can come think of a few.
 - Kitchenware products
 - Enticing customers to visit cafés and or restaurants, offer deals/discounts
@@ -24,8 +26,9 @@ If there were any, I can come think of a few.
 - The site is to some extent depending on images uploaded by users.
 - I've chosen to let the images speak the colors. Therefore I've picked unobtrusive colors on the navbar and body.
 
-
 ### Typography
+
+The primary font 'RocknRoll One' was chosen for the body text of the site because of it clear readability, yet somewhat funky style. This font also looks good in uppercase with a little extra letter spacing.
 
 ### Wireframe
 
@@ -44,6 +47,43 @@ If there were any, I can come think of a few.
 - Be able to search on ingredients
 - Pagination
 
+# Architecture
+
+### Database Choice
+
+- MongoDB
+- On deployment, the MongoDB database provided by Heroku is a **PostgreSQL** database. 
+
+#### Recipe app model
+
+Within the `recipe` app, the **Recipe** model holds all the data needed.
+
+**Recipes model**
+
+| Name | Type |
+--- | --- | --- | ---
+recipe_name | string
+category_name | string
+recipe_description | string
+recipe_ingredients | string
+recipe_how_to | string
+created_by | string
+recipe_image | string
+
+- Category choices are defined within the recipe model.
+
+**Categories model**
+
+| Name | Type |
+--- | --- | --- | ---
+category_name | string
+
+**Users model**
+
+| Name | Type |
+--- | --- | --- | ---
+username | string
+password | string (pbkdf2:sha256 hashed)
 
 ## Technologies used
 
@@ -65,6 +105,7 @@ If there were any, I can come think of a few.
 - Heroku for deployment
 - Visual Studio Code
 - Google Fonts to style the website fonts.
+
 ## Testing
 
 - https://validator.w3.org/nu/#textarea  - not done yet
