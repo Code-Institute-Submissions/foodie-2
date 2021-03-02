@@ -6,7 +6,9 @@
     <div class="col s12 m8 offset-m2">
         <div class="card-panel">
             <h4>View of {{ username }}'s recipes <i class=" fas fa-user"></i></h4>
-            <p>Here you can edit and delete the recipes you've uploaded.</p>
+            <p>Here you can edit and delete the recipes you've uploaded.
+            <a class="btn-small right" href="{{ url_for('add_recipes') }}">Add recipe</a>
+            </p>
         </div>
     </div>
     {% for recipe in recipes %}

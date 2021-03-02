@@ -33,8 +33,8 @@
                             <label for="recipe_ingredients">Ingredients</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to" placeholder="Step one:"
-                                      type="text" class="validate" required></textarea>
+                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to"
+                                      placeholder="Step one:" type="text" class="validate" required></textarea>
                             <label for="recipe_how_to">How To</label>
                         </div>
                          <div class="input-field col s12">
@@ -56,8 +56,9 @@
                 </div>
             </div>
             <div class="col s6">
-                <button class="btn-flat" type="submit" name="action">Submit
+                <button class="btn-small" type="submit" name="action">Submit
                 </button>
+                <a class="btn-small" href="{{ url_for('get_recipes') }}">Cancel</a>
             </div>
         </form>
     </div>
