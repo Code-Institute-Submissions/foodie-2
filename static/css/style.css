@@ -1,4 +1,4 @@
-//BASE
+/*BASE*/
 body {
     background-color: #F8f8f8;
     font-family: 'RocknRoll One', sans-serif;
@@ -22,7 +22,7 @@ li a {
     color: #242038;
 }
 
-//COMPONENTS
+/*COMPONENTS*/
 .recipe-bodytext {
     white-space: pre-wrap;
 }
@@ -32,7 +32,7 @@ li a {
     color: #242038;
 }
 
-//MATERIALIZE
+/*MATERIALIZE*/
 .flashes h4 {
     line-height: 2;
     margin: 0;
@@ -83,7 +83,7 @@ border-radius: 10px;
 margin-top: 30px;
 }
 
-//MEDIA QUERIES
+/*MEDIA QUERIES*/
 @media only screen and (max-width: 992px) {
   .row .col {
     float: none;
@@ -95,7 +95,7 @@ margin-top: 30px;
   }
 }
 
-//Taken from W3schools.com
+/*Taken from W3schools.com*/
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
