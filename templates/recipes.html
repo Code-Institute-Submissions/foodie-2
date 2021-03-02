@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Search through all of our tasty recipes</h3>
+<h2>Foodie, when looking for inspiration...</h2>
 {% for category in categories %}
 <label>
     <input type="checkbox" class="filled-in" name="category" value="{{ category.category_name }}"/>
@@ -10,14 +10,13 @@
 {% endfor %}
  <div id="recipe-wrapper" class="row">
      {% for recipe in recipes %}
-     <div class="recipe">
-    <div class="col l12 xl10 offset-xl1">
+    <div class="recipe col l12 xl10 offset-xl1"> {{ recipe.category_name }}
       <div class="card">
         <div class="card-image">
           <div class="card-image-img" style="background: url(/file/{{ recipe.recipe_image }})">
-          <span class="card-category">{{ recipe.category_name }}</span>
+          <span class="card-category">{{ recipe.category_name.capitalize() }}</span>
             <span class="card-title">{{ recipe.recipe_name }}</span>
-          <a class="btn-floating halfway-fab waves-light red"><i class="fas fa-heart"></i></a>
+              <span class="card-author">by {{ recipe.created_by.capitalize() }}</span>
         </div>
         <div class="card-content">
           <p> {{ recipe.recipe_description }}</p>
@@ -33,6 +32,9 @@
                           <div class="col l8"><h4>How to:</h4>
                                   <p class="recipe-bodytext">{{ recipe.recipe_how_to }}</p>
                               </div>
+                          <div class="col l8"><h4></h4>
+                                  <p class="recipe-bodytext">{{ recipe.more_info }}</p>
+                              </div>
                       </div>
                   </div>
               </li>
@@ -40,14 +42,7 @@
       </div>
     </div>
     </div>
-         </div>
      {% endfor %}
   </div>
 
 {% endblock %}
-
-<script src="text/javascript">
-    $('.recipe-bodytext').on('click', function(){
-        console.log('hej');
-    });
-</script>

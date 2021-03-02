@@ -6,8 +6,7 @@
 
     <div class="col s12">
         <form class="" method="POST" action=" {{ url_for('add_recipes') }}" enctype="multipart/form-data">
-            <div class="card">
-                <div class="card-image">
+            <div class="card card-add-recipe">
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
@@ -29,37 +28,39 @@
                         </div>
                         <div class="input-field col s12">
                             <textarea id="recipe_ingredients" class="materialize-textarea" name="recipe_ingredients"
-                                      type="text" class="validate" required> </textarea>
-                            <label for="recipe_ingredients">Ingredients</label>
+                                      type="text" placeholder="ex 1tsp salt" class="validate" required></textarea>
+                            <label for="recipe_ingredients"><i class="fas fa-pencil-alt"></i> Ingredients</label>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to"
-                                      placeholder="Step one:" type="text" class="validate" required></textarea>
-                            <label for="recipe_how_to">How To</label>
+                                      placeholder="ex Step one:" type="text" class="validate" required></textarea>
+                            <label for="recipe_how_to"><i class="fas fa-pencil-alt"></i> How To</label>
                         </div>
-                         <div class="input-field col s12">
+                        <div class="input-field col s12">
                             <input id="more_info" name="more_info" type="text" class="validate"
                                    required>
                             <label for="more_info">Have you got something further to add:</label>
-                        <div class="input-field col s12">
-                            <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Upload image</span>
-                        <input type="file" name="recipe_image" accept="image/*" required>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
+                            <div class="input-field col s12">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Upload image</span>
+                                        <input type="file" name="recipe_image" accept="image/*" required>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s6">
-                <button class="btn-small" type="submit" name="action">Submit
-                </button>
-                <a class="btn-small" href="{{ url_for('get_recipes') }}">Cancel</a>
-            </div>
+                <div class="col s12">
+                       <div class="btn-wrapper right-align">
+                    <button class="btn-small" type="submit" name="action">Submit
+                    </button>
+                    <a class="btn-small red lighten-2" href="{{ url_for('get_recipes') }}">Cancel</a>
+                       </div>
+                </div>
         </form>
     </div>
 
