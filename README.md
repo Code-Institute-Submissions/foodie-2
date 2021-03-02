@@ -40,7 +40,6 @@ These wireframes were hand drawn during the planning process for this project.
 
 ### Features
 
-- Navbar
 - Filter based on categories
 - Sign up/Sign in/Log out
 
@@ -53,6 +52,7 @@ These wireframes were hand drawn during the planning process for this project.
 - Add comments on other people's recipes
 - Rating
 - Be able to search on ingredients
+- be able to have more than one category for a recipe
 - Pagination
 
 # Architecture
@@ -60,7 +60,6 @@ These wireframes were hand drawn during the planning process for this project.
 ### Database Choice
 
 - MongoDB
-- On deployment, the MongoDB database provided by Heroku is a **PostgreSQL** database. 
 
 #### Recipe app model
 
@@ -88,10 +87,14 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 
 **Users model**
 
-| Name     | Type                          |
-| -------- | ----------------------------- |
-| username | string                        |
-| password | string (pbkdf2:sha256 hashed) |
+| Name       | Type                          |
+| ---------- | ----------------------------- |
+| username   | string                        |
+| password   | string (pbkdf2:sha256 hashed) |
+| first_name | string                        |
+| last_name  | string                        |
+| email      | string                        |
+| phone      | string                        |
 
 
 ## Technologies used
@@ -126,6 +129,10 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 
 ### Different browsers
 
+- Firefox 84.0.2 - (latest on OSX)
+- Safari 14.0.2 - (latest on OSX)
+- Chrome 87.0.4280.141 - (latest on OSX + Android)
+
 ## Known bugs/ issues
 
  - I had trouble with the upload recipe image function. 
@@ -153,6 +160,8 @@ Photo by Maria Orlova from Pexels - cinnamon bun
 Photo by alleksana from Pexels - Lasagna
 Photo by Anthony Leong from Pexels - Seafood pasta
 Photo by Valeria Boltneva from Pexels - prawn coconut soup
+Photo by Sebastian Coman Photography from Pexels - pasta
+Photo by Chokniti Khongchum from Pexels - pancakes
 
 ## Deployment
 
@@ -222,5 +231,5 @@ To deploy Foodie to heroku, take the following steps:
 
 ### Aknowledgements
 - Husband, my home tutor. What a star.
-- Anna Villanueva, my mentor. She gives me valuable input and is a great support.
+- Anna Villanueva, my mentor. She gives me valuable input and offers great support.
 - Robin Bertilsson, friend of my husband. Dev wiz.
