@@ -60,30 +60,30 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 
 **Recipes model**
 
-| Name | Type |
---- | --- | --- | ---
-recipe_name | string
-category_name | string
-recipe_description | string
-recipe_ingredients | string
-recipe_how_to | string
-created_by | string
-recipe_image | string
+| Name                | Type        |
+| ------------------- | ------------|
+| recipe_name         | string      |
+| category_name       | string      |
+| recipe_description  | string      |
+| recipe_ingredients  | string      |
+| recipe_how_to       | string      |
+| created_by          | string      |
+| recipe_image        | string      |
 
 - Category choices are defined within the recipe model.
 
 **Categories model**
 
-| Name | Type |
---- | --- | --- | ---
-category_name | string
+| Name                | Type        |
+| ------------------- | ------------|
+| category_name       | string      |
 
 **Users model**
 
-| Name | Type |
---- | --- | --- | ---
-username | string
-password | string (pbkdf2:sha256 hashed)
+| Name     | Type                          |
+| -------- | ----------------------------- |
+| username | string                        |
+| password | string (pbkdf2:sha256 hashed) |
 
 ## Technologies used
 
