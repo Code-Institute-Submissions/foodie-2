@@ -32,10 +32,18 @@ The primary font 'RocknRoll One' was chosen for the body text of the site becaus
 
 ### Wireframe
 
+These wireframes were hand drawn during the planning process for this project. 
+
+- [Main](https://github.com/carrozw/foodie/blob/main/images/wireframe-main.jpg)
+- [Profile](https://github.com/carrozw/foodie/blob/main/images/wireframe-profile.jpg)
+- [Mobile](https://github.com/carrozw/foodie/blob/main/images/wireframe-mobile.jpg)
+
 ### Features
-- 
--
--
+
+- Navbar
+- Filter based on categories
+- Sign up/Sign in/Log out
+
 
 ### Features left to implement
 
@@ -85,6 +93,7 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 | username | string                        |
 | password | string (pbkdf2:sha256 hashed) |
 
+
 ## Technologies used
 
 ### Languages
@@ -108,11 +117,9 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 
 ## Testing
 
-- https://validator.w3.org/nu/#textarea  - not done yet
-- https://jigsaw.w3.org/css-validator/#validate_by_input - not done
-- https://webaim.org/resources/contrastchecker/ - not done
-- https://jshint.com/ - not done
-
+- https://jigsaw.w3.org/css-validator/#validate_by_input - passed
+- https://webaim.org/resources/contrastchecker/ - passed (created by on card img isn't too obvious to notice, on purpose)
+- https://jshint.com/ - passed
 
 
 ### Further/manually testing
@@ -121,18 +128,16 @@ Within the `recipe` app, the **Recipe** model holds all the data needed.
 
 ## Known bugs/ issues
 
- - Had trouble with the upload recipe image function. 
+ - I had trouble with the upload recipe image function. 
  after extensive search on stack overflow and such I found this video on Youtube https://www.youtube.com/watch?v=DsgAuceHha4 and I finally figured it out after many trials and errors.
 
 - Had trouble parsing ObjectId when fetching recipe_id as it was passed in as an object and not a string.
 
-- when editing an existing recipe, the image that was uploaded earlier disappears.
+- When editing an existing recipe, the image that was uploaded earlier disappears.
 
 - To be able to present strings from textarea with linebreaks I stumbled upon https://stackoverflow.com/questions/18662898/jinja-render-text-in-html-preserving-line-breaks as I was having difficulties presenting it nicely when adding recipes. 
 
-- https://stackoverflow.com/questions/16516394/filtering-data-with-check-boxes-using-jquery - Helped me with the filtering of the categories.
-
-- when deleting a recipe the modal sometimes asks to delete the wrong recipe, not the recipe you clicked delete on that is.
+- When deleting a recipe the modal wasn't deleting the correct one. I had to send in a data-attribute to fix it.
 
 
 ## Media
@@ -151,21 +156,71 @@ Photo by Valeria Boltneva from Pexels - prawn coconut soup
 
 ## Deployment
 
- ### How to run this project locally
- To run this project on your own IDE follow the instructions below:
+### How to run this project locally
+To run this project on your own IDE follow the instructions below:
 
-Ensure you have the following tools: - An IDE such as Visual Studio Code
+Ensure you have the following tools: 
+    - An IDE such as [Visual Studio Code](https://code.visualstudio.com/) or [PyCharm](https://www.jetbrains.com/pycharm/download)
 
-The following must be installed on your machine: - PIP - Python 3 
+The following **must be installed** on your machine:
+    - [PIP](https://pip.pypa.io/en/stable/installing/)
+    - [Python 3](https://www.python.org/downloads/)
+    - [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
 
 ### Instructions
+1. Save a copy of the github repository located at https://github.com/carrozw/foodie by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
+    ```
+    git clone https://github.com/carrozw/foodie
+    ```
+
+2. Open your preferred IDE, open a terminal session in the unzip folder or cd to the correct location.
+
+3. If needed, Upgrade pip locally with
+    ```
+    pip install --upgrade pip.
+    ```
+
+4. Install all required modules with the command 
+    ```
+    pip -r requirements.txt.
+    ```
 
 ## Heroku Deployment
 
+To deploy Foodie to heroku, take the following steps:
+
+1. Create a `requirements.txt` file using the terminal command `pip freeze > requirements.txt`.
+
+2. Create a `Procfile` with the terminal command `echo web: python app.py > Procfile`.
+
+3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
+
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to whichever is applicable for your location.
+
+4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+
+5. Confirm the linking of the heroku app to the correct GitHub repository.
+
+6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+7. Set the following config vars:
+
+| Name         | Type                          |
+| ------------ | ----------------------------- |
+| MONGO_DBNAME | `<your secret db name>`       |
+| MONGO_URI    | `<your mongo uri>`            |
+| SECRET_KEY   | `<your secret key>`           |
+
+8. In your heroku dashboard, click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
+
+9. Once the build is complete, click the "View app" button provided.
+
 ## Credits
 
-### code
+### Code
+-  The Data Centric Design mini-project, Task Manager, with Tim Nelson was a very good base as a starting point for my project.
 
 ### Aknowledgements
-- Husband
-- Anna
+- Husband, my home tutor. What a star.
+- Anna Villanueva, my mentor. She gives me valuable input and is a great support.
+- Robin Bertilsson, friend of my husband. Dev wiz.

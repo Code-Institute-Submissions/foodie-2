@@ -27,12 +27,12 @@ $(document).ready(function(){
         if( $activeLi ) {
             $chevron.removeClass('fa-chevron-down');
             $chevron.addClass('fa-chevron-up');
-            $seeMore.html('See less...')
+            $seeMore.html('See less...');
         }
         else {
             $chevron.removeClass('fa-chevron-up');
             $chevron.addClass('fa-chevron-down');
-            $seeMore.html('See more...')
+            $seeMore.html('See more...');
         }
   });
     //Confirm password
