@@ -52,18 +52,30 @@ $(document).ready(function(){
     });
 
     //Category filter
-    // start all checked
-    let $filters = $("input:checkbox[name='category']").prop('checked', true);
-    let $categoryContent = $('#recipe-wrapper .recipe');
+    let $filters = $("input:checkbox[name='category']");
+    let $categoryContent = $('.recipe');
+    let filters = [];
 
-    $filters.click(function () {
-        // if any of the checkboxes for categories are checked, you want to show div's containing their value, and you want to hide all the rest.
-        $categoryContent.hide();
-        var $selectedFilters = $filters.filter(':checked');
-        if ($selectedFilters.length > 0) {
-            $selectedFilters.each(function (i, el) {
-                $categoryContent.filter(':contains(' + el.value + ')').show();
-            });
+    $filters.on('change', function(e){
+        filters = [];
+        $("input:checkbox[name='category']:checked").each(function(index, checkbox){
+            filters.push(checkbox.value);
+        });
+        if (filters.length > 0) {
+            $categoryContent.hide();
         }
+        else {
+            $categoryContent.show();
+        }
+        filters.forEach(function(filter){
+            $(`[data-recipe-category="${filter}"]`).show();
+        });
+    });
+
+
+    //Modal delete recipe
+    $('.modal-recipe-delete').on('click', function(){
+        let deleteUrl = $(this).attr('data-recipeid');
+        $('.modal-delete-recipe').attr('href', deleteUrl);
     });
 });

@@ -1,48 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Foodie, when looking for inspiration...</h2>
-{% for category in categories %}
-<label>
-    <input type="checkbox" class="filled-in" name="category" value="{{ category.category_name }}"/>
-    <span>{{ category.category_name.capitalize() }}</span>
-</label>
-{% endfor %}
- <div id="recipe-wrapper" class="row">
-     {% for recipe in recipes %}
-    <div class="recipe col l12 xl10 offset-xl1"> {{ recipe.category_name }}
-      <div class="card">
-        <div class="card-image">
-          <div class="card-image-img" style="background: url(/file/{{ recipe.recipe_image }})">
-          <span class="card-category">{{ recipe.category_name.capitalize() }}</span>
-            <span class="card-title">{{ recipe.recipe_name }}</span>
-              <span class="card-author">by {{ recipe.created_by.capitalize() }}</span>
-        </div>
-        <div class="card-content">
-          <p> {{ recipe.recipe_description }}</p>
-        </div>
-          <ul class="collapsible card-seemore">
-              <li>
-                  <div class="collapsible-header"><i class="fas fa-chevron-down"></i><span>See more...</span></div>
-                  <div class="collapsible-body">
-                      <div class="row">
-                          <div class="col l4"><h4>Ingredients:</h4>
-                                  <p class="recipe-bodytext">{{ recipe.recipe_ingredients }}</p>
-                          </div>
-                          <div class="col l8"><h4>How to:</h4>
-                                  <p class="recipe-bodytext">{{ recipe.recipe_how_to }}</p>
-                              </div>
-                          <div class="col l8"><h4></h4>
-                                  <p class="recipe-bodytext">{{ recipe.more_info }}</p>
-                              </div>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
+<div class="row">
+    <div class="col l12 xl10 offset-xl1">
+        <h2>Foodie, when looking for inspiration...</h2>
+        {% for category in categories %}
+        <label>
+            <input type="checkbox" class="filled-in" name="category" value="{{ category.category_name }}"/>
+            <span>{{ category.category_name.capitalize() }}</span>
+        </label>
+        {% endfor %}
     </div>
+    {% for recipe in recipes %}
+    <div class="recipe col l12 xl10 offset-xl1" data-recipe-category="{{ recipe.category_name }}">
+        <div class="card">
+            <div class="card-image">
+                <div class="card-image-img" style="background: url(/file/{{ recipe.recipe_image }})">
+                    <span class="card-category">{{ recipe.category_name.capitalize() }}</span>
+                    <span class="card-title">{{ recipe.recipe_name }}</span>
+                    <span class="card-author">by {{ recipe.created_by.capitalize() }}</span>
+                </div>
+                <div class="card-content">
+                    <p> {{ recipe.recipe_description }}</p>
+                </div>
+                <ul class="collapsible card-seemore">
+                    <li>
+                        <div class="collapsible-header"><i class="fas fa-chevron-down"></i><span>See more...</span>
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="col l4"><h4>Ingredients:</h4>
+                                    <p class="recipe-bodytext">{{ recipe.recipe_ingredients }}</p>
+                                </div>
+                                <div class="col l8"><h4>How to:</h4>
+                                    <p class="recipe-bodytext">{{ recipe.recipe_how_to }}</p>
+                                </div>
+                                <div class="col l8"><h4></h4>
+                                    <p class="recipe-bodytext">{{ recipe.more_info }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-     {% endfor %}
-  </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

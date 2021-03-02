@@ -1,31 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Edit recipe</h3>
 <div class="row">
-    <div class="col s12">
+    <div class="col l12 xl10 offset-xl1">
+        <h3>Edit recipe</h3>
         <form class="" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id )}}"
               enctype="multipart/form-data">
-            <div class="card">
+            <div class="card card-recipe-form">
                 <div class="card-image">
-                    <img src="/file/{{ recipe.recipe_image }}" alt="">
-                    <input type="hidden" name="current_recipe_img" id="current_recipe_img" value="{{ recipe.recipe_image }}">
+                    <div class="card-image-img" style="background: url(/file/{{ recipe.recipe_image }})"></div>
+                    <input type="hidden" name="current_recipe_img" id="current_recipe_img"
+                           value="{{ recipe.recipe_image }}">
                     <div class="row">
                         <div class="input-field col s12">
+                            <div class="file-field">
+                                <div class="btn">
+                                    <span>Upload image</span>
+                                    <input type="file" name="recipe_image" accept="image/*">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
                             <input id="recipe_name" name="recipe_name" type="text" class="validate"
-                                    value="{{ recipe.recipe_name }}" required>
+                                   value="{{ recipe.recipe_name }}" required>
                             <label for="recipe_name">Recipe Name</label>
                         </div>
                         <div class="input-field col s12">
                             <select name="category_name">
                                 {% for category in categories %}
-                                    {% if category.category_name == recipe.category_name %}
-                                        <option value="{{ category.category_name }}" selected>{{ category.category_name.capitalize() }}
-                                        </option>
-                                    {% else %}
-                                        <option value="{{ category.category_name }}">{{ category.category_name.capitalize() }}
-                                        </option>
-                                    {% endif %}
+                                {% if category.category_name == recipe.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{
+                                    category.category_name.capitalize() }}
+                                </option>
+                                {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name.capitalize() }}
+                                </option>
+                                {% endif %}
                                 {% endfor %}
                             </select>
                         </div>
@@ -40,7 +53,8 @@
                             <label for="recipe_ingredients">Ingredients</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to" placeholder="Step one:"
+                            <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to"
+                                      placeholder="Step one:"
                                       type="text" class="validate" required>{{ recipe.recipe_how_to }}</textarea>
                             <label for="recipe_how_to">How To</label>
                         </div>
@@ -52,19 +66,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6">
-                <button class="btn-small" type="submit">Update!</button>
-                <a class="btn-small red lighten-2" href="{{ url_for('get_recipes') }}">Cancel</a>
-            </div>
-            <div class="col s6">
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Upload image</span>
-                        <input type="file" name="recipe_image" accept="image/*">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
+            <div class="col s12">
+                <div class="btn-wrapper right-align">
+                    <a class="btn-small red lighten-2" href="{{ url_for('get_recipes') }}">Cancel</a>
+                    <button class="btn-small" type="submit">Update!</button>
                 </div>
             </div>
         </form>

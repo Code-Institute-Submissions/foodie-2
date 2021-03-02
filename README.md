@@ -1,5 +1,4 @@
 # Foodie
-- Image of project
 
 Foodie was designed, built and deployed by Caroline Zwolinski as her third project for the Code Institute Full Stack Web Development. The purpose of the site is to share recipes with fellow foodlovers. 
 
@@ -36,12 +35,14 @@ If there were any, I can come think of a few.
 -
 
 ### Features left to implement
-- Click on Heart to add to "My favourites"
+
+- Click on a Heart to add to "My favourites"
 - Be able to share a recipe through Facebook/whatsapp and such
-- upload photo for your profile page
-- add comments on other people's recipes
-- rating
+- Upload photo for your profile page
+- Add comments on other people's recipes
+- Rating
 - Be able to search on ingredients
+- Pagination
 
 
 ## Technologies used
@@ -53,14 +54,17 @@ If there were any, I can come think of a few.
 - JavaScript
 
 ### Frameworks, Libraries and programs
-- Materialize
+- Materialize css to simplify the structure of the website and make the website responsive easily.
 - Font Awesome to provide icons
 - JQuery to simplify DOM manipulation.
 - Draw.io to create the wireframes for this project.
-- PyCharm
+- PyCharm is the IDE used for developing this project.
 - Flask
 - PIP for installation of tools needed in this project.
-
+- GitHub to store and share all project code remotely.
+- Heroku for deployment
+- Visual Studio Code
+- Google Fonts to style the website fonts.
 ## Testing
 
 - https://validator.w3.org/nu/#textarea  - not done yet
@@ -103,7 +107,19 @@ Photo by Maria Orlova from Pexels - cinnamon bun
 Photo by alleksana from Pexels - Lasagna
 Photo by Anthony Leong from Pexels - Seafood pasta
 Photo by Valeria Boltneva from Pexels - prawn coconut soup
+
 ## Deployment
+
+ ### How to run this project locally
+ To run this project on your own IDE follow the instructions below:
+
+Ensure you have the following tools: - An IDE such as Visual Studio Code
+
+The following must be installed on your machine: - PIP - Python 3 
+
+### Instructions
+
+## Heroku Deployment
 
 ## Credits
 

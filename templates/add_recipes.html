@@ -1,66 +1,66 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3>Add recipes</h3>
 <div class="row">
-
-    <div class="col s12">
+    <div class="col l12 xl10 offset-xl1">
+        <h3>Add recipes</h3>
         <form class="" method="POST" action=" {{ url_for('add_recipes') }}" enctype="multipart/form-data">
-            <div class="card card-add-recipe">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
-                            <label for="recipe_name">Recipe Name</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <select name="category_name">
-                                <option disabled selected>Select category</option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}">{{ category.category_name.capitalize() }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="input-field col s12">
-                            <input id="recipe_description" name="recipe_description" type="text" class="validate"
-                                   required>
-                            <label for="recipe_description">Description</label>
-                        </div>
-                        <div class="input-field col s12">
+            <div class="card card-recipe-form">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                        <label for="recipe_name">Recipe Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="category_name">
+                            <option disabled selected>Select category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.category_name }}">{{ category.category_name.capitalize() }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="recipe_description" name="recipe_description" type="text" class="validate"
+                               required>
+                        <label for="recipe_description">Description</label>
+                    </div>
+                    <div class="input-field col s12">
                             <textarea id="recipe_ingredients" class="materialize-textarea" name="recipe_ingredients"
                                       type="text" placeholder="ex 1tsp salt" class="validate" required></textarea>
-                            <label for="recipe_ingredients"><i class="fas fa-pencil-alt"></i> Ingredients</label>
-                        </div>
-                        <div class="input-field col s12">
+                        <label for="recipe_ingredients"><i class="fas fa-pencil-alt"></i> Ingredients</label>
+                    </div>
+                    <div class="input-field col s12">
                             <textarea id="recipe_how_to" class="materialize-textarea" name="recipe_how_to"
                                       placeholder="ex Step one:" type="text" class="validate" required></textarea>
-                            <label for="recipe_how_to"><i class="fas fa-pencil-alt"></i> How To</label>
-                        </div>
+                        <label for="recipe_how_to"><i class="fas fa-pencil-alt"></i> How To</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="more_info" name="more_info" type="text" class="validate"
+                               required>
+                        <label for="more_info">Have you got something further to add:</label>
                         <div class="input-field col s12">
-                            <input id="more_info" name="more_info" type="text" class="validate"
-                                   required>
-                            <label for="more_info">Have you got something further to add:</label>
-                            <div class="input-field col s12">
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>Upload image</span>
-                                        <input type="file" name="recipe_image" accept="image/*" required>
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text">
-                                    </div>
+                            <div class="file-field input-field">
+                                <div class="btn">
+                                    <span>Upload image</span>
+                                    <input type="file" name="recipe_image" accept="image/*" required>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col s12">
-                       <div class="btn-wrapper right-align">
+            </div>
+            <div class="col s12">
+                <div class="btn-wrapper right-align">
+                    <a class="btn-small red lighten-2" href="{{ url_for('get_recipes') }}">Cancel</a>
                     <button class="btn-small" type="submit" name="action">Submit
                     </button>
-                    <a class="btn-small red lighten-2" href="{{ url_for('get_recipes') }}">Cancel</a>
-                       </div>
                 </div>
+
+            </div>
         </form>
     </div>
 

@@ -1,8 +1,14 @@
+//BASE
 body {
     background-color: #F8f8f8;
     font-family: 'RocknRoll One', sans-serif;
 }
-
+h2, h3 {
+    margin: 50px 0;
+}
+button {
+    font-family: 'RocknRoll One', sans-serif;
+}
 nav {
     background-color: #F7ECE1;
 }
@@ -12,11 +18,24 @@ nav ul a {
     color: #242038;
 }
 
+li a {
+    color: #242038;
+}
+
+//COMPONENTS
+.recipe-bodytext {
+    white-space: pre-wrap;
+}
+
+.page-footer {
+    background-color: #F7ECE1;
+    color: #242038;
+}
+
+//MATERIALIZE
 .flashes h4 {
     line-height: 2;
-}
-.btn-floating.halfway-fab {
-    bottom: 15px;
+    margin: 0;
 }
 .card-category {
     color: #242038;
@@ -26,6 +45,13 @@ nav ul a {
     top: 15px;
     left: 15px;
 }
+.card-author {
+    color: #F7ECE1;
+    position: absolute;
+    padding: 2px 4px;
+    right: 15px;
+    bottom: 15px;
+}
 .card-image-img {
     position: relative;
     width: 100%;
@@ -33,9 +59,6 @@ nav ul a {
     background-size: cover!important;
     background-position: center center!important;
     background-repeat: no-repeat!important;
-}
-.recipe-bodytext {
-    white-space: pre-wrap;
 }
 
 .card .card-image .card-title {
@@ -46,9 +69,49 @@ nav ul a {
     bottom: 15px;
     left: 15px;
 }
-
 [type="checkbox"]+span:not(.lever) {
     margin-right: 25px;
     padding-left: 30px;
     line-height: 20px;
+}
+.card-recipe-form {
+    padding: 1rem;
+}
+.card-panel {
+background-color: #F7ECE1;
+border-radius: 10px;
+margin-top: 30px;
+}
+
+//MEDIA QUERIES
+@media only screen and (max-width: 992px) {
+  .row .col {
+    float: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+}
+
+//Taken from W3schools.com
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
